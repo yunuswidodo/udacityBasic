@@ -22,22 +22,30 @@ public class MainActivity extends AppCompatActivity {
     public void increment(View view){
 
         quantity = quantity + 1;
-        display(quantity);
+        displayQuatity(quantity);
     }
      public void decrement(View view){
         quantity = quantity - 1;
-        display(quantity);
+        displayQuatity(quantity);
      }
 
     public void submitOrder(View view) {
-        int price = quantity * 5;
+        int price = calculationPrice();
         String princeMessage = "Total $ "  + price;
         princeMessage =  princeMessage + "\nthank you!" ;
         displayPrice(quantity * 5);
         displayMessage(princeMessage);
+
+
     }
 
-    private void display(int number) {
+    private int calculationPrice() {
+        int price = quantity * 5;
+        return price;
+    }
+
+
+    private void displayQuatity(int number) {
         TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -33,24 +34,32 @@ public class MainActivity extends AppCompatActivity {
      }
 
     public void submitOrder(View view) {
-        TextView nameCustamor = (TextView) findViewById(R.id.et_name);
+        EditText nameField = (EditText) findViewById(R.id.et_name);
+        String name = nameField.getText().toString();
+
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        boolean haswhippedCream = whippedCreamCheckBox.isChecked();
+
         CheckBox whippedChocolateCheckBox= (CheckBox) findViewById(R.id.whipped_cream_checkbox);
-        String name = String.valueOf(nameCustamor.getText()); //kalao ngambil string pakai valueof
-        boolean haswhippedCreamCheckBox = whippedCreamCheckBox.isChecked();
-        boolean haswhippedChocolateBox = whippedChocolateCheckBox.isChecked();
-        int price = calculationPrice();
-        String princeMessage = createOrderSummary(price, haswhippedCreamCheckBox, haswhippedChocolateBox, name); //memanggil crateOrderSummary
-//        displayPrice(quantity * 2);
+        boolean hasChocolate = whippedChocolateCheckBox.isChecked();
+
+        int price = calculationPrice(haswhippedCream,hasChocolate ); //memanggik calculation
+        String princeMessage = createOrderSummary(price, haswhippedCream, hasChocolate, name); //memanggil crateOrderSummary
+
         displayMessage(princeMessage);
     }
 
 
-    private int calculationPrice() {
-//        int price = quantity * 5;
-//        return price;   //asal
-//menjadi dibaah ini
-        return quantity * 5;
+    private int calculationPrice(boolean addWhippedCream, boolean addChocolate) {
+        //prince of 1 cup of coffee
+        int basePrice = 5;
+        if (addWhippedCream){
+            basePrice = basePrice + 1;
+        }
+        if (addChocolate){
+            basePrice = basePrice + 2 ;
+        }
+        return quantity * basePrice;
     }
 
 

@@ -43,10 +43,11 @@ public class MainActivity extends AppCompatActivity {
         boolean hasChocolate = ChocolateCheckBox.isChecked();
 
         int price = calculationPrice(haswhippedCream,hasChocolate ); //memanggik calculation
-        String princeMessage = createOrderSummary(price, haswhippedCream, hasChocolate, name); //memanggil crateOrderSummary
+        String princeMessage = createOrderSummary(name, haswhippedCream, hasChocolate, price); //memanggil crateOrderSummary
 
         displayMessage(princeMessage);
-      
+
+
     }
 
     private int calculationPrice(boolean addWhippedCream, boolean addChocolate) {
@@ -62,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private String createOrderSummary(int price, boolean addWhippedCream, boolean addWhipedChocolate, String name){
+    private String createOrderSummary(String name, boolean addWhippedCream, boolean addWhipedChocolate, int price){
         String princeMessage = name;
         princeMessage += "\nadd whipped cream? " + addWhippedCream;
         princeMessage += "\nadd whipped chocolate? " + addWhipedChocolate;
@@ -82,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
 //        //defauld number adalah local coding tanpa dikasih parameter
 //        princeTextView.setText(NumberFormat.getCurrencyInstance(Locale.US).format(number));
 //    }
+
     private void  displayMessage(String  message){
         TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
         orderSummaryTextView.setText(message);

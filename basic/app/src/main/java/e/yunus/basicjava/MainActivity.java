@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increment(View view){
-
         quantity = quantity + 1;
         displayQuatity(quantity);
     }
@@ -40,15 +39,15 @@ public class MainActivity extends AppCompatActivity {
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean haswhippedCream = whippedCreamCheckBox.isChecked();
 
-        CheckBox whippedChocolateCheckBox= (CheckBox) findViewById(R.id.whipped_cream_checkbox);
-        boolean hasChocolate = whippedChocolateCheckBox.isChecked();
+        CheckBox ChocolateCheckBox = (CheckBox) findViewById(R.id.whipped_chocolate_checkbox);
+        boolean hasChocolate = ChocolateCheckBox.isChecked();
 
         int price = calculationPrice(haswhippedCream,hasChocolate ); //memanggik calculation
         String princeMessage = createOrderSummary(price, haswhippedCream, hasChocolate, name); //memanggil crateOrderSummary
 
         displayMessage(princeMessage);
+      
     }
-
 
     private int calculationPrice(boolean addWhippedCream, boolean addChocolate) {
         //prince of 1 cup of coffee
@@ -61,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         }
         return quantity * basePrice;
     }
-
 
 
     private String createOrderSummary(int price, boolean addWhippedCream, boolean addWhipedChocolate, String name){

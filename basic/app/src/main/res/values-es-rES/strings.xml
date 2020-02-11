@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">BasicJava</string>
-    <string name="thank_you">coba</string>
-    <string name="toppings">coba</string>
+    <string name="app_name">Solo java</string>
+    <string name="thank_you">Gracias</string>
+    <string name="toppings">Ingredient</string>
+    <string name="chocolate">Chocolate</string>
+    <string name="whipped_cream">Crema Batide</string>
+    <string name="quantity">Cantidad</string>
+    <string name="name">Nombre</string>
 </resources>

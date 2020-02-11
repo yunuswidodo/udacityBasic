@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = new Intent(Intent.ACTION_SENDTO);
         intent.setData(Uri.parse("mailto:")); // only email apps should handle this
-        intent.putExtra(Intent.EXTRA_SUBJECT, "just java order" + name);
+        intent.putExtra(Intent.EXTRA_SUBJECT, "just java order " + name);
         intent.putExtra(Intent.EXTRA_TEXT, princeMessage);
 
         if (intent.resolveActivity(getPackageManager()) != null) {
@@ -84,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
 
     private String createOrderSummary(String name, boolean addWhippedCream, boolean addWhipedChocolate, int price){
         String princeMessage = getString(R.string.order_summary_name, name);
-        princeMessage += "\nadd whipped cream? " + addWhippedCream;
-        princeMessage += "\nadd whipped chocolate? " + addWhipedChocolate;
-        princeMessage += "\nQuantity : " + quantity;   //artinya princemassage =  princemassage
-        princeMessage += "\nTotal $ "  + price;
-        princeMessage =  princeMessage + getString(R.string.thank_you) ;
+        princeMessage += "\n" + getString(R.string.order_summary_whipped_cream,  addWhippedCream);
+        princeMessage += "\n" + getString(R.string.order_summary_chocolate, addWhipedChocolate);
+        princeMessage += "\n" + getString(R.string.order_summary_quantity, quantity);   //artinya princemassage =  princemassage
+        princeMessage += "\n" +getString(R.string.order_summmary_prince, NumberFormat.getCurrencyInstance().format(price));
+        princeMessage =  princeMessage + " \n" +getString(R.string.thank_you) ;
         return princeMessage;
     }
 

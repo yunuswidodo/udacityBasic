@@ -2,12 +2,15 @@ package e.yunus.basicjava;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -25,9 +28,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void increment(View view){
         quantity = quantity + 1;
+        if (quantity == 100){
+            Toast.makeText(this, "you cannot have than 100 coffee", Toast.LENGTH_SHORT).show();
+            return;
+        }
         displayQuatity(quantity);
     }
      public void decrement(View view){
+        if (quantity == 1){
+            Toast.makeText(this, "you cannot have less than 1 coffe ", Toast.LENGTH_SHORT).show();
+            return;
+        }
         quantity = quantity - 1;
         displayQuatity(quantity);
      }
@@ -45,8 +56,16 @@ public class MainActivity extends AppCompatActivity {
         int price = calculationPrice(haswhippedCream,hasChocolate ); //memanggik calculation
         String princeMessage = createOrderSummary(name, haswhippedCream, hasChocolate, price); //memanggil crateOrderSummary
 
-        displayMessage(princeMessage);
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        intent.putExtra(Intent.EXTRA_SUBJECT, "just java order" + name);
+        intent.putExtra(Intent.EXTRA_TEXT, princeMessage);
 
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+
+       // displayMessage(princeMessage); display order
 
     }
 
@@ -64,12 +83,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     private String createOrderSummary(String name, boolean addWhippedCream, boolean addWhipedChocolate, int price){
-        String princeMessage = name;
+        String princeMessage = getString(R.string.order_summary_name, name);
         princeMessage += "\nadd whipped cream? " + addWhippedCream;
         princeMessage += "\nadd whipped chocolate? " + addWhipedChocolate;
         princeMessage += "\nQuantity : " + quantity;   //artinya princemassage =  princemassage
         princeMessage += "\nTotal $ "  + price;
-        princeMessage =  princeMessage + "\nthank you!" ;
+        princeMessage =  princeMessage + getString(R.string.thank_you) ;
         return princeMessage;
     }
 
@@ -78,14 +97,9 @@ public class MainActivity extends AppCompatActivity {
         TextView quantityTextView = findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
-//    private void displayPrice(int number){
-//        TextView princeTextView = findViewById(R.id.price_text_view);
-//        //defauld number adalah local coding tanpa dikasih parameter
-//        princeTextView.setText(NumberFormat.getCurrencyInstance(Locale.US).format(number));
-//    }
 
-    private void  displayMessage(String  message){
-        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
-        orderSummaryTextView.setText(message);
-    }
+//    private void  displayMessage(String  message){  untuk display order
+//        TextView orderSummaryTextView = findViewById(R.id.order_summary_text_view);
+//        orderSummaryTextView.setText(message);
+//    }
 }

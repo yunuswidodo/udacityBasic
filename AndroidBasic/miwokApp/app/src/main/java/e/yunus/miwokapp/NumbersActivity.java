@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -34,7 +36,7 @@ public class NumbersActivity extends AppCompatActivity {
         //Log.v("number", "coba arraylisr " + word.get(0));
 
         //display to xml
-        LinearLayout linearLayout = findViewById(R.id.rootView);
+        //LinearLayout linearLayout = findViewById(R.id.rootView);
 
         // TextView wordView = new TextView(this);
 //        int index = 0;
@@ -57,11 +59,16 @@ public class NumbersActivity extends AppCompatActivity {
 //         }
 
         //use for lop
-        for (int coba = 0; coba <word.size(); coba++){
-            TextView wordview = new TextView(this);
-            wordview.setText(word.get(coba));
-            linearLayout.addView(wordview);
-        }
+//        for (int coba = 0; coba <word.size(); coba++){
+//            TextView wordview = new TextView(this);
+//            wordview.setText(word.get(coba));
+//            linearLayout.addView(wordview);
+//        }
+
+        //use listview
+        ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, word);
+        ListView listView = (ListView)findViewById(R.id.list);
+        listView.setAdapter(itemAdapter);
 
     }
 }

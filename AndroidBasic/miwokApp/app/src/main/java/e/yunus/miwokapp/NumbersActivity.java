@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ArrayAdapter;
+import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -65,10 +66,15 @@ public class NumbersActivity extends AppCompatActivity {
 //            linearLayout.addView(wordview);
 //        }
 
-        //use listview
-        ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, word);
-        ListView listView = (ListView)findViewById(R.id.list);
-        listView.setAdapter(itemAdapter);
+        //use listview  -> change the xml layout from linearlayout to listviewlayout
+//        ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, word);
+//        ListView listView = (ListView)findViewById(R.id.list);
+//        listView.setAdapter(itemAdapter);
+
+        //use gridview -> change the xml layout from list view to grid view add atribut android:numColoumns
+         ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, word);
+         GridView gridView = (GridView) findViewById(R.id.list);
+         gridView.setAdapter(itemAdapter);
 
     }
 }

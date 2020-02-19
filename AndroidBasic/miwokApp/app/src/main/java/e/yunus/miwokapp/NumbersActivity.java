@@ -28,11 +28,11 @@ public class NumbersActivity extends AppCompatActivity {
 //        Log.v("coba", words[1]);
 
         //Create an ArrayList
-        ArrayList<String> word = new ArrayList<String>();
-        word.add("one");
-        word.add("two");
-        word.add("three");
-        word.add("four");
+//        ArrayList<String> word = new ArrayList<String>();
+//        word.add("one");
+//        word.add("two");
+//        word.add("three");
+//        word.add("four");
 
         //Log.v("number", "coba arraylisr " + word.get(0));
 
@@ -72,9 +72,23 @@ public class NumbersActivity extends AppCompatActivity {
 //        listView.setAdapter(itemAdapter);
 
         //use gridview -> change the xml layout from list view to grid view add atribut android:numColoumns
-         ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, word);
-         GridView gridView = (GridView) findViewById(R.id.list);
-         gridView.setAdapter(itemAdapter);
+//         ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, word);
+//         GridView gridView = (GridView) findViewById(R.id.list);
+//         gridView.setAdapter(itemAdapter);
+
+        //use adapter
+        ArrayList<Word> words = new ArrayList<Word>();
+        words.add(new Word("one", "lutfi"));
+        words.add(new Word("two", "otiiko"));
+        words.add(new Word("three", "tolooluso"));
+        words.add(new Word("four", "oyyisa"));
+
+        WordAdapter adapter = new WordAdapter(this, words);
+        ListView listView = (ListView)findViewById(R.id.list);
+        listView.setAdapter(adapter);
+
+
+
 
     }
 }

@@ -47,14 +47,14 @@ public class WordAdapter extends ArrayAdapter<Word> {
         // set this text on the number TextView
         defaultTextView.setText(currentWord.getDefaultTranslation());
 
-        // Find the ImageView in the list_item.xml layout with the ID list_item_icon
-//        ImageView iconView = (ImageView) listItemView.findViewById(R.id.list_item_icon);
-        // Get the image resource ID from the current AndroidFlavor object and
-        // set the image to iconView
-//        iconView.setImageResource(currentAndroidFlavor.getImageResourceId());
+         //Find the ImageView in the list_item.xml layout with the ID list_item_icon
+        ImageView iconView = (ImageView) listItemView.findViewById(R.id.image);
+         //Get the image resource ID from the current AndroidFlavor object and
+         //set the image to iconView
+        iconView.setImageResource(currentWord.getImageResourceId());
 
-        // Return the whole list item layout (containing 2 TextViews and an ImageView)
-        // so that it can be shown in the ListView
+         //Return the whole list item layout (containing 2 TextViews and an ImageView)
+         //so that it can be shown in the ListView
         return listItemView;
     }
 }

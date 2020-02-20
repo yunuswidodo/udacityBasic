@@ -78,10 +78,10 @@ public class NumbersActivity extends AppCompatActivity {
 
         //use adapter
         ArrayList<Word> words = new ArrayList<Word>();
-        words.add(new Word("one", "lutfi"));
-        words.add(new Word("two", "otiiko"));
-        words.add(new Word("three", "tolooluso"));
-        words.add(new Word("four", "oyyisa"));
+        words.add(new Word("one", "lutfi", R.drawable.img1));
+        words.add(new Word("two", "otiiko", R.drawable.img2));
+        words.add(new Word("three", "tolooluso", R.drawable.img3));
+        words.add(new Word("four", "oyyisa", R.drawable.img4));
 
         WordAdapter adapter = new WordAdapter(this, words);
         ListView listView = (ListView)findViewById(R.id.list);

@@ -7,9 +7,8 @@ public class Word {
 
     // Android version number (e.g. 2.3-2.7, 3.0-3.2.6, 4.0-4.0.4)
     private String mDefault;
-
     // Drawable resource ID
-   // private int mImageResourceId;
+    private int mImageResourceId;
 
     /*
      * Create a new AndroidFlavor object.
@@ -18,11 +17,11 @@ public class Word {
      * @param vNumber is the corresponding Android version number (e.g. 2.3-2.7)
      * @param image is drawable reference ID that corresponds to the Android version
      * */
-    public Word(String lutfi, String one)
+    public Word(String lutfi, String one, int imageResourceId)
     {
         mDefault = lutfi;
         mMiwok = one;
-        //mImageResourceId = imageResourceId;
+        mImageResourceId = imageResourceId;
     }
 
     /**
@@ -39,12 +38,14 @@ public class Word {
         return mDefault;
     }
 
+
+
     /**
      * Get the image resource ID
      */
-//    public int getImageResourceId() {
-//        return mImageResourceId;
-//    }
+    public int getImageResourceId() {
+        return mImageResourceId;
+    }
 
 
 }

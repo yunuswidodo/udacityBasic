@@ -8,7 +8,9 @@ public class Word {
     // Android version number (e.g. 2.3-2.7, 3.0-3.2.6, 4.0-4.0.4)
     private String mDefault;
     // Drawable resource ID
-    private int mImageResourceId;
+    private int mImageResourceId = NO_IMAGE_PROVIDED;
+
+    private static final int NO_IMAGE_PROVIDED = -1;
 
     /*
      * Create a new AndroidFlavor object.
@@ -22,6 +24,11 @@ public class Word {
         mDefault = lutfi;
         mMiwok = one;
         mImageResourceId = imageResourceId;
+    }
+
+    public Word(String coba1, String coba11) {
+        mDefault = coba1;
+        mMiwok = coba11;
     }
 
     /**
@@ -48,4 +55,7 @@ public class Word {
     }
 
 
+    public boolean hasImage(){
+        return mImageResourceId != NO_IMAGE_PROVIDED;
+    }
 }

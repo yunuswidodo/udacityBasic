@@ -3,12 +3,31 @@ package e.yunus.miwokapp;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phrases);
+        setContentView(R.layout.activity_numbers);
+
+        ArrayList<Word> wordss = new ArrayList<Word>();
+        wordss.add(new Word("coba1", "coba1"));
+        wordss.add(new Word("coba2", "coba2"));
+        wordss.add(new Word("coba3", "coba3"));
+
+        WordAdapter adapter = new WordAdapter(this, wordss);
+        ListView listView = (ListView)findViewById(R.id.list);
+        listView.setAdapter(adapter);
+
+
+
+
+
     }
-}
+
+    }
+

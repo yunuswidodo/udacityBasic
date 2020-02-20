@@ -53,6 +53,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        TextView phrases =  findViewById(R.id.phrases);
+        phrases.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "coba", Toast.LENGTH_SHORT).show();
+                Intent phrasesIntent = new Intent(MainActivity.this, PhrasesActivity.class);
+                startActivity(phrasesIntent);
+            }
+        });
+
     }
 
 }
+

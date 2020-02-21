@@ -1,6 +1,7 @@
 package e.yunus.miwokapp;
 
 import android.app.Activity;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +13,22 @@ import java.util.ArrayList;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 
 public class WordAdapter extends ArrayAdapter<Word> {
 
-    public WordAdapter(Activity context, ArrayList<Word> words) {
+    /** Resource ID for the background color fo this list of word*/
+
+    private int mColorResourceId;
+
+    public WordAdapter(Activity context, ArrayList<Word> words, int colorResourceId) {
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
         // the second argument is used when the ArrayAdapter is populating a single TextView.
         // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
         // going to use this second argument, so it can be any value. Here, we used 0.
         super(context, 0, words);
+        mColorResourceId = colorResourceId;
+
     }
 
     @Override
@@ -57,6 +65,11 @@ public class WordAdapter extends ArrayAdapter<Word> {
         }else {
             iconView.setVisibility(View.GONE);
         }
+        View textContainer = listItemView.findViewById(R.id.text_container);
+        //find the color that the resource ID maps to
+        int color = ContextCompat.getColor(getContext(), mColorResourceId);
+        //set the backgroud color of the text container view
+        textContainer.setBackgroundColor(color);
          //Return the whole list item layout (containing 2 TextViews and an ImageView)
          //so that it can be shown in the ListView
         return listItemView;

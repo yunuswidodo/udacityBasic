@@ -83,7 +83,7 @@ public class NumbersActivity extends AppCompatActivity {
         words.add(new Word("three", "tolooluso", R.drawable.img3));
         words.add(new Word("four", "oyyisa", R.drawable.img4));
 
-        WordAdapter adapter = new WordAdapter(this, words);
+        WordAdapter adapter = new WordAdapter(this, words, R.color.category_number);
         ListView listView = (ListView)findViewById(R.id.list);
         listView.setAdapter(adapter);
 

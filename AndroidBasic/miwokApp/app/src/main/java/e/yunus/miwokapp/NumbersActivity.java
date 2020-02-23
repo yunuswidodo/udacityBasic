@@ -21,6 +21,14 @@ public class NumbersActivity extends AppCompatActivity {
 
     //use musik on listitemlistener
     private MediaPlayer mMediaPlayer;
+
+    //media player
+    private MediaPlayer.OnCompletionListener mCompletionListener = new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            relaseMediaPlayer();
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -109,9 +117,25 @@ public class NumbersActivity extends AppCompatActivity {
 
                 //play oudio per item
                 Word word= words.get(position);
+
+                //relase the media player if it currently exists because we are about to play a different sound file
+                relaseMediaPlayer();
+
+                //play aodio per item
                 mMediaPlayer = MediaPlayer.create(NumbersActivity.this, word.getmAudioResourceId());
                 mMediaPlayer.start();
+
+                //media player
+                //set up a listener on the media player, so that we can stop and relase the media player once the sounds has finished playing
+                mMediaPlayer.setOnCompletionListener(mCompletionListener);
+
             }
         });
+    }
+    private void relaseMediaPlayer(){
+        if (mMediaPlayer != null){
+            mMediaPlayer.release();
+            mMediaPlayer = null;
+        }
     }
 }

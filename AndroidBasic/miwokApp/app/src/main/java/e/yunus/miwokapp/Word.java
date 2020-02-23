@@ -12,6 +12,8 @@ public class Word {
 
     private static final int NO_IMAGE_PROVIDED = -1;
 
+    //audio resource ID for the wod
+    private int mAudioResourceId;
     /*
      * Create a new AndroidFlavor object.
      *
@@ -19,16 +21,18 @@ public class Word {
      * @param vNumber is the corresponding Android version number (e.g. 2.3-2.7)
      * @param image is drawable reference ID that corresponds to the Android version
      * */
-    public Word(String lutfi, String one, int imageResourceId)
+    public Word(String lutfi, String one, int imageResourceId, int audioResourceId)
     {
         mDefault = lutfi;
         mMiwok = one;
         mImageResourceId = imageResourceId;
+        mAudioResourceId = audioResourceId;
     }
 
-    public Word(String coba1, String coba11) {
+    public Word(String coba1, String coba11, int audioResourceId) {
         mDefault = coba1;
         mMiwok = coba11;
+        mAudioResourceId = audioResourceId;
     }
 
     /**
@@ -57,5 +61,9 @@ public class Word {
 
     public boolean hasImage(){
         return mImageResourceId != NO_IMAGE_PROVIDED;
+    }
+
+    public int getmAudioResourceId(){
+        return mAudioResourceId;
     }
 }

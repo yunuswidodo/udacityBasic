@@ -2,7 +2,9 @@ package e.yunus.miwokapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.provider.UserDictionary;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -17,10 +19,15 @@ import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
 
+    //use musik on listitemlistener
+    private MediaPlayer mMediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
+
+
+
 
         //create an array of word
 //        String[] words = new String[3];
@@ -79,12 +86,15 @@ public class NumbersActivity extends AppCompatActivity {
 //         GridView gridView = (GridView) findViewById(R.id.list);
 //         gridView.setAdapter(itemAdapter);
 
+        //use musik on listitemlistener
+
+
         //use adapter
-        ArrayList<Word> words = new ArrayList<Word>();
-        words.add(new Word("one", "lutfi", R.drawable.img1));
-        words.add(new Word("two", "otiiko", R.drawable.img2));
-        words.add(new Word("three", "tolooluso", R.drawable.img3));
-        words.add(new Word("four", "oyyisa", R.drawable.img4));
+        final ArrayList<Word> words = new ArrayList<Word>();
+        words.add(new Word("one", "lutfi", R.drawable.img1, R.raw.cdoldwet));
+        words.add(new Word("two", "otiiko", R.drawable.img2, R.raw.donttalk));
+        words.add(new Word("three", "tolooluso", R.drawable.img3, R.raw.cdoldwet));
+        words.add(new Word("four", "oyyisa", R.drawable.img4, R.raw.donttalk));
 
         WordAdapter adapter = new WordAdapter(this, words, R.color.category_number);
         ListView listView = (ListView)findViewById(R.id.list);
@@ -94,6 +104,13 @@ public class NumbersActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Toast.makeText(NumbersActivity.this,"toast listener", Toast.LENGTH_SHORT).show();
+//                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, R.raw.donttalk);
+//                mMediaPlayer.start();
+
+                //play oudio per item
+                Word word= words.get(position);
+                mMediaPlayer = MediaPlayer.create(NumbersActivity.this, word.getmAudioResourceId());
+                mMediaPlayer.start();
             }
         });
     }

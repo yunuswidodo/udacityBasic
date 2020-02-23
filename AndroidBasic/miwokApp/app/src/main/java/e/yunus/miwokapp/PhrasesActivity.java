@@ -15,9 +15,9 @@ public class PhrasesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
         ArrayList<Word> wordss = new ArrayList<Word>();
-        wordss.add(new Word("coba1", "coba1"));
-        wordss.add(new Word("coba2", "coba2"));
-        wordss.add(new Word("coba3", "coba3"));
+        wordss.add(new Word("coba1", "coba1", R.raw.cdoldwet));
+        wordss.add(new Word("coba2", "coba2", R.raw.donttalk));
+        wordss.add(new Word("coba3", "coba3", R.raw.cdoldwet));
 
         WordAdapter adapter = new WordAdapter(this, wordss, R.color.category_phrases);
         ListView listView = (ListView)findViewById(R.id.list);

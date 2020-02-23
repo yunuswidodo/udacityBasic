@@ -25,6 +25,14 @@ public class MainActivity extends AppCompatActivity {
                 mediaPlayer.start();
                 Toast.makeText(MainActivity.this,"play button",Toast.LENGTH_SHORT).show();
 
+                //if music is done than appeared Toast
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        Toast.makeText(MainActivity.this,"im done", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
             }
         });
 
